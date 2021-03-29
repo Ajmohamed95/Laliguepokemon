@@ -1,4 +1,8 @@
 let express = require('express');
+// let pokemonModel = require("./models/pokemonModel.js");
+// let mysql = new pokemonModel();
+// mysql.connect();
+
 let app = express();
 // const urlencodedParser = bodyParser.urlencoded({​​​​​extended: false}​​​​​);
 // Import body parser

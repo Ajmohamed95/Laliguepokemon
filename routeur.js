@@ -1,13 +1,14 @@
 let express = require('express');
 let router = express.Router();
 var todoController = require('./controller/TodooController');
+const pokemonModel = require('./controller/PokemonController');
 
 
 
 router.get('/',(req,res)=> res.redirect('/listnom'))
 
 // router.get('/add',(req,res)=> {let newList = req.query.newList;listnom.push(newList);res.render("todo.ejs",{listnom:listnom,message:"ajout reussi"})})
-router.get('/listnom',todoController.listnom);
+router.get('/listnom',pokemonModel.listnom);
 router.get('/listnom/add', todoController.listnomFormAdd);
 router.post('/listnom/new', todoController.listnomNew);
 router.get('/listnom/update/:todoid',todoController.listnomUpdate)

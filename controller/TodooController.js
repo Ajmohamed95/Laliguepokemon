@@ -1,20 +1,21 @@
 const todomodel = require('../models/todooModel');
-let listnom = [new todomodel("Songoku"),new todomodel("vegeta")]
+
+let listnom = [ new todomodel("Songoku"), new todomodel("vegeta")]
 let name = ""
+
 // recuperer la list 
 exports.listnom = function (req, res) { 
     res.render('todo.ejs',{listnom:listnom})
-        }
+}
 
 exports.listnomFormAdd = function(req, res) {
     res.render("listnomAdd.ejs", {todoid:'-1',name:""});
-        }
+}
 
 exports.listnomUpdate =  function(req, res) {
     let todoid = req.params.todoid
     let name =  listnom[todoid].name;
-    res.render("listnomAdd.ejs",{todoid:todoid,name:name})
-
+    res.render("listnomAdd.ejs", { todoid:todoid, name:name } )
 }
 
 exports.listnomNew =  function(req, res) {
