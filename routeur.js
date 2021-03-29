@@ -1,21 +1,25 @@
 let express = require('express');
 let router = express.Router();
-var todoController = require('./controller/TodooController');
-const pokemonModel = require('./controller/PokemonController');
+var carteController = require('./controller/CarteController');
+const pokemonController = require('./controller/PokemonController');
+const proprietaireController = require('./controller/ProprietaireController');
+
 
 
 
 router.get('/',(req,res)=> res.redirect('/listnom'))
 
 // router.get('/add',(req,res)=> {let newList = req.query.newList;listnom.push(newList);res.render("todo.ejs",{listnom:listnom,message:"ajout reussi"})})
-router.get('/listnom',pokemonModel.listnom);
-router.get('/listnom/add', todoController.listnomFormAdd);
-router.post('/listnom/new', todoController.listnomNew);
-router.get('/listnom/update/:todoid',todoController.listnomUpdate)
+router.get('/listnom',pokemonController.listnom);
+//router.get('/collectionCarte',carteController.listCarte);
+router.get('/collectionCarte',proprietaireController.listProprio);
+//router.get('/listnom/add', todoController.listnomFormAdd);
+router.post('/listCarte/new', proprietaireController.carteNew);
+//router.get('/listnom/update/:todoid',todoController.listnomUpdate)
 
 
 
-router.get('/listnom/remove/:todoid',todoController.listnomRemove)
+//router.get('/listnom/remove/:todoid',todoController.listnomRemove)
 
 
 // importation controller

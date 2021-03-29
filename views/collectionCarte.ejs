@@ -1,0 +1,41 @@
+<h1>Liste des cartes</h1>
+<p> 
+<!-- <% for( let i = 0; i <listProprio.length; i++ ) { %> 
+        <%= listProprio[i].login %> 
+        <Form action="/remove/<%= i %>">
+            <button>delete</button>
+        </Form><br>
+<%  } %>
+    -->
+<form action="/listCarte/new" method="POST">
+    <label for="cartes">Cartes: </label> 
+    <input type="text" id="cartes" name="cartes" value=" "><br>
+    <input type="checkbox" id="brillant" name="brillant1" value="1">
+    <label for="brillant1"> Brillance </label><br>
+    <input type="checkbox" id="rare" name="rare1" value="1">
+    <label for="rare1"> Rareté </label><br>
+    <label for="attaque">Attaque: </label> 
+    <input type="text" id="attaque" name="attaque" value=" "><br>
+    <label for="Puissance">Puissance (between 1 and 100):</label>
+    <input type="number" id="puissance" name="puissance1" min="1" max="100">
+    <br>
+    <label for="proprio">nom de propriétaire: </label>
+    <select name="proprio" id="proprio">
+        <% for( let i = 0; i <listProprio.length; i++ ) { %> 
+            <option value="<%= listProprio[i].login %> "> <%= listProprio[i].login %> </option>
+    <%  } %>
+    </select>
+    <br><br>
+    <br>
+    <label for="pokemon">pokemon attaché: </label>
+    <select name="pokemon" id="pokemon">
+        <% for( let i = 0; i <listPokemon.length; i++ ) { %> 
+            <option value="<%= listPokemon[i].login %> "> <%= listPokemon[i].login %> </option>
+    <%  } %>
+    </select>
+    <br><br>
+<button>send</button>
+</form>
+</p>
+
+

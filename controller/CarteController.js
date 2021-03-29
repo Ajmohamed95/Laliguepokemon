@@ -1,11 +1,20 @@
-const todomodel = require('../models/todooModel');
+const carteModel = require('../models/carteModel');
+const connection = require('../dbManager')
 
-let listnom = [ new todomodel("Songoku"), new todomodel("vegeta")]
-let name = ""
 
 // recuperer la list 
-exports.listnom = function (req, res) { 
-    res.render('todo.ejs',{listnom:listnom})
+exports.listCarte = function (req, res) { 
+    connection.query("SELECT * FROM pokemon.carte", function (error, resultSQL) {
+        if (error)  {
+            res.status(400).send(error); //400=error       
+        }
+        else {
+            res.status(200); //200: Ok pas d'erreur
+            listCarte =  resultSQL;
+            console.log(listCarte);
+            res.render('collectionCarte.ejs',{listCarte:listCarte})
+        }
+    });
 }
 
 exports.listnomFormAdd = function(req, res) {
