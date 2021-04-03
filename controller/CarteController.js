@@ -26,6 +26,11 @@ exports.listnomUpdate =  function(req, res) {
     let name =  listnom[todoid].name;
     res.render("listnomAdd.ejs", { todoid:todoid, name:name } )
 }
+exports.listCarte = function (req, res) {
+    console.log("test")
+    res.render("listCarte.ejs")
+    
+}
 
 exports.listnomNew =  function(req, res) {
     

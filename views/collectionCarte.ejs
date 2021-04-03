@@ -22,7 +22,7 @@
     <label for="proprio">nom de propriétaire: </label>
     <select name="proprio" id="proprio">
         <% for( let i = 0; i <listProprio.length; i++ ) { %> 
-            <option value="<%= listProprio[i].login %> "> <%= listProprio[i].login %> </option>
+            <option value="<%= listProprio[i].idutilisateur %> "> <%= listProprio[i].login %> </option>
     <%  } %>
     </select>
     <br><br>
@@ -30,11 +30,11 @@
     <label for="pokemon">pokemon attaché: </label>
     <select name="pokemon" id="pokemon">
         <% for( let i = 0; i <listPokemon.length; i++ ) { %> 
-            <option value="<%= listPokemon[i].login %> "> <%= listPokemon[i].login %> </option>
+            <option value="<%= listPokemon[i].idpokemon %> "> <%= listPokemon[i].nom %> </option>
     <%  } %>
     </select>
     <br><br>
-<button>send</button>
+<button>Ajouter</button>
 </form>
 </p>
 

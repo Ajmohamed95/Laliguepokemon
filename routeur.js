@@ -1,20 +1,22 @@
 let express = require('express');
 let router = express.Router();
-var carteController = require('./controller/CarteController');
+const carteController = require('./controller/CarteController');
 const pokemonController = require('./controller/PokemonController');
 const proprietaireController = require('./controller/ProprietaireController');
 
 
 
 
-router.get('/',(req,res)=> res.redirect('/listnom'))
+router.get('/',(req,res)=> res.redirect('/login'))
 
 // router.get('/add',(req,res)=> {let newList = req.query.newList;listnom.push(newList);res.render("todo.ejs",{listnom:listnom,message:"ajout reussi"})})
 router.get('/listnom',pokemonController.listnom);
+router.get('/login',proprietaireController.login);
 //router.get('/collectionCarte',carteController.listCarte);
 router.get('/collectionCarte',proprietaireController.listProprio);
 //router.get('/listnom/add', todoController.listnomFormAdd);
 router.post('/listCarte/new', proprietaireController.carteNew);
+router.get('/listCarte',carteController.listCarte);
 //router.get('/listnom/update/:todoid',todoController.listnomUpdate)
 
 
