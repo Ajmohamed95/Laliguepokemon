@@ -1,3 +1,17 @@
-<h1>
-    Bonjour
-</h1>
+<h1>Liste des pokemons</h1>
+<p> 
+<% for( let i = 0; i <listCarte.length; i++ ) { %> 
+<%= listCarte[i].nom %> 
+<Form action="/remove/<%= i %>">
+    <button>delete</button>
+</Form><br>
+<%  } %>
+<br> 
+
+
+
+<form action="/listnom/new" method="POST">
+<input type="texte" id="newList" name="newList">
+<button>send</button></form>
+    
+</p>

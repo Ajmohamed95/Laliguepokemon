@@ -1,14 +1,19 @@
 <h1>Connexion</h1>
 <p> 
-<form action="/collectionCarte" method="GET">
+<form action="/logon" method="POST">
     
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" value="Moh" required>
+
+    <label for="email">Enter your email:</label>
+    <input type="email" placeholder="Enter Mail" id="email" name="email" value="a@hotmail.com" required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" value="123456" required>
 
     <button>Se connecter</button>
+    <a href="/inscription">s'inscrire</a>
+
 </form>
-    
+<%= error %> 
 </p>

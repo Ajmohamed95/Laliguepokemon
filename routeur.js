@@ -12,8 +12,11 @@ router.get('/',(req,res)=> res.redirect('/login'))
 // router.get('/add',(req,res)=> {let newList = req.query.newList;listnom.push(newList);res.render("todo.ejs",{listnom:listnom,message:"ajout reussi"})})
 router.get('/listnom',pokemonController.listnom);
 router.get('/login',proprietaireController.login);
+router.post('/logon',proprietaireController.logon)
 //router.get('/collectionCarte',carteController.listCarte);
 router.get('/collectionCarte',proprietaireController.listProprio);
+router.get('/inscription',proprietaireController.inscription)
+router.post('/inscrit',proprietaireController.inscrit)
 //router.get('/listnom/add', todoController.listnomFormAdd);
 router.post('/listCarte/new', proprietaireController.carteNew);
 router.get('/listCarte',carteController.listCarte);

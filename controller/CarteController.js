@@ -6,13 +6,15 @@ const connection = require('../dbManager')
 exports.listCarte = function (req, res) { 
     connection.query("SELECT * FROM pokemon.carte", function (error, resultSQL) {
         if (error)  {
+            console.log(error)
             res.status(400).send(error); //400=error       
         }
         else {
+            console.log("test2")
             res.status(200); //200: Ok pas d'erreur
             listCarte =  resultSQL;
             console.log(listCarte);
-            res.render('collectionCarte.ejs',{listCarte:listCarte})
+            res.render('listCarte.ejs',{listCarte:listCarte})
         }
     });
 }
@@ -25,11 +27,6 @@ exports.listnomUpdate =  function(req, res) {
     let todoid = req.params.todoid
     let name =  listnom[todoid].name;
     res.render("listnomAdd.ejs", { todoid:todoid, name:name } )
-}
-exports.listCarte = function (req, res) {
-    console.log("test")
-    res.render("listCarte.ejs")
-    
 }
 
 exports.listnomNew =  function(req, res) {

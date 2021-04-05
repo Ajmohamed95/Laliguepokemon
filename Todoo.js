@@ -11,6 +11,14 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+var session = require('express-session');
+
+app.use(session({
+    secret : 'my secret',
+    resave : false,
+    saveUninitialized : false
+})
+);
 
 // app.get('/',(req,res)=> res.render('todo.ejs',{listnom:listnom,message:""}))
 // //app.post('/add',(req,res)=> {let newList = req.query.newList;listnom.push(newList);res.render('todo.ejs',{listnom:listnom});})
