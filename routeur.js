@@ -20,6 +20,7 @@ router.post('/inscrit',proprietaireController.inscrit)
 //router.get('/listnom/add', todoController.listnomFormAdd);
 router.post('/listCarte/new', proprietaireController.carteNew);
 router.get('/listCarte',carteController.listCarte);
+router.get('/listCarte/:idcarte',carteController.manageCarte)
 //router.get('/listnom/update/:todoid',todoController.listnomUpdate)
 
 

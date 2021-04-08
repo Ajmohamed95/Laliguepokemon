@@ -1,17 +1,23 @@
 <h1>Liste des pokemons</h1>
-<p> 
-<% for( let i = 0; i <listCarte.length; i++ ) { %> 
-<%= listCarte[i].nom %> 
-<Form action="/remove/<%= i %>">
-    <button>delete</button>
-</Form><br>
-<%  } %>
-<br> 
-
-
-
-<form action="/listnom/new" method="POST">
-<input type="texte" id="newList" name="newList">
-<button>send</button></form>
+<table style="width:100%">
+    <tr>
+        <th>Nom</th>
+        <th>puissance</th>
+        <th>attaque</th>
+        <th>modifier</th>
+        <th>supprimer</th>
+    </tr>
+    <% for( let i = 0; i <listCarte.length; i++ ) { %>
+    <Form action="/listCarte/<%= listCarte[i].idcarte  %>" method="GET">
+    <tr>
+      <th><%= listCarte[i].nom %></th>
+      <th><%= listCarte[i].puissance %></th>
+      <th><%= listCarte[i].attaque %></th>
+      <th><button name="update" value="update">update</button></th>
+      <th><button name="delete" value="delete">delete</button></th>
+    </tr>
+</Form>
+      <%  } %>
+  </table>
     
-</p>
+
