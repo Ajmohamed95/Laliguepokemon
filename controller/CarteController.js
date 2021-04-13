@@ -4,7 +4,7 @@ const connection = require('../dbManager')
 
 // recuperer la list 
 exports.listCarte = function (req, res) { 
-    connection.query("SELECT * FROM pokemon.carte", function (error, resultSQL) {
+    connection.query("SELECT idcarte, pokemon.nom as nompokemon, carte.nom as nomcarte, attaque, puissance, IsBrillant, IsRare, pokemon, proprietaire, idpokemon, type, element FROM pokemon.carte JOIN pokemon.pokemon on pokemon=idpokemon", function (error, resultSQL) {
         if (error)  {
             console.log(error)
             res.status(400).send(error); //400=error       
@@ -22,8 +22,25 @@ exports.manageCarte = function (req, res){
     let idcarte = req.params.idcarte
     let update = req.query.update
     if (update) {
-        console.log(update)
-        res.redirect("/listCarte")
+        console.log(req.query)
+        let carteid = req.params.idcarte
+        let cartenom = req.query.cartenom
+        let brillant1 = req.query.isbrillant
+        let rare1 = req.query.israre
+        let attaque = req.query.attaque
+        let puissance1 = req.query.puissance
+        let proprio = req.session.idutilisateur
+        let idpokemon = req.query.idpokemon
+        let carte = new carteModel(cartenom, attaque, puissance1, brillant1, rare1, proprio, idpokemon) 
+        connection.query("UPDATE pokemon.carte SET ? WHERE idcarte=? " ,[carte,carteid],function(error,resultSQL){ 
+            if (error){
+                res.status(400).send(error);
+            
+            }
+            else {
+                res.status(201).redirect("/listCarte")
+            }
+        });
     
     }
     else{

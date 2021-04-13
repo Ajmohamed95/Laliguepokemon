@@ -4,17 +4,31 @@
         <th>Nom</th>
         <th>puissance</th>
         <th>attaque</th>
+        <th>Brillant</th>
+        <th>Rare</th>
+        <th>pokemon Attaché</th>
         <th>modifier</th>
         <th>supprimer</th>
     </tr>
-    <% for( let i = 0; i <listCarte.length; i++ ) { %>
+    <% for( let i = 0; i <listCarte.length; i++ ) {
+        let isbrillant = listCarte[i].IsBrillant == 1
+              ? "oui"
+              : "non"
+        let israre = listCarte[i].IsRare == 1
+              ? "oui"
+              : "non"
+        %>
     <Form action="/listCarte/<%= listCarte[i].idcarte  %>" method="GET">
     <tr>
-      <th><%= listCarte[i].nom %></th>
-      <th><%= listCarte[i].puissance %></th>
-      <th><%= listCarte[i].attaque %></th>
+      <th><input type="text" name="cartenom" value="<%= listCarte[i].nomcarte %>"></th>
+      <th><input type="text" name="puissance" value="<%= listCarte[i].puissance %>"></th>
+      <th><input type="text" name="attaque" value="<%= listCarte[i].attaque %>"></th>
+      <th><input type="text" name="isbrillant" value="<%= isbrillant %>"></th>
+      <th><input type="text" name="israre" value="<%= israre %>"></th>
+      <th><input type="text" name="nompokemon" value="<%= listCarte[i].nompokemon %>"></th>
       <th><button name="update" value="update">update</button></th>
       <th><button name="delete" value="delete">delete</button></th>
+      <th><input type="hidden" name="idpokemon" value="<%= listCarte[i].idpokemon %>"></th>
     </tr>
 </Form>
       <%  } %>
