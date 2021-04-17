@@ -1,6 +1,6 @@
 const carteModel = require('../models/carteModel');
 const connection = require('../dbManager')
-
+var pokemonsCtrl = require ('./PokemonController')
 
 // recuperer la list 
 exports.listCarte = function (req, res) { 
@@ -11,9 +11,13 @@ exports.listCarte = function (req, res) {
         }
         else {
             res.status(200); //200: Ok pas d'erreur
-            listCarte =  resultSQL;
-            //console.log(listCarte);
-            res.render('listCarte.ejs',{listCarte:listCarte})
+            listCarte =  resultSQL; //pour changer le nom de la variable 
+            var pokemons;
+            pokemonsCtrl.listPokemons(function(result){
+                pokemons=result
+                res.render('listCarte.ejs',{listCarte:listCarte,pokemons:pokemons}) //premier listCarte se trouve ds ejs
+            });
+            
         }
     });
 }
@@ -25,13 +29,14 @@ exports.manageCarte = function (req, res){
         console.log(req.query)
         let carteid = req.params.idcarte
         let cartenom = req.query.cartenom
-        let brillant1 = req.query.isbrillant
-        let rare1 = req.query.israre
+        let brillant1 = req.query.isBrillant
+        let rare1 = req.query.isRare
         let attaque = req.query.attaque
         let puissance1 = req.query.puissance
         let proprio = req.session.idutilisateur
-        let idpokemon = req.query.idpokemon
+        let idpokemon = req.query.pokemonattache
         let carte = new carteModel(cartenom, attaque, puissance1, brillant1, rare1, proprio, idpokemon) 
+        console.log(carte)
         connection.query("UPDATE pokemon.carte SET ? WHERE idcarte=? " ,[carte,carteid],function(error,resultSQL){ 
             if (error){
                 res.status(400).send(error);

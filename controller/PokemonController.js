@@ -3,16 +3,19 @@ const connection = require('../dbManager')
 
 
 // recuperer la list 
-exports.listnom = function (req, res) { 
+exports.listPokemons = function (res) { 
+    var pokemons;
     connection.query("SELECT * FROM pokemon.pokemon", function (error, resultSQL) {
         if (error)  {
-            res.status(400).send(error); //400=error       
+            //res.status(400).send(error); //400=error
+            console.log("error listpokemons")       
         }
         else {
-            res.status(200); //200: Ok pas d'erreur
-            listPokemon =  resultSQL;
-            console.log(listPokemon);
-            res.render('todo.ejs',{listnom:listPokemon})
+            //res.status(200); //200: Ok pas d'erreur
+            pokemons =  resultSQL;
+            //console.log(pokemons);
+            //res.render('todo.ejs',{listnom:listPokemon})
+            return res(pokemons);
         }
     });
 }
