@@ -1,13 +1,14 @@
 const carteModel = require('../models/carteModel');
 const connection = require('../dbManager')
-var pokemonsCtrl = require ('./PokemonController')
+var pokemonsCtrl = require ('./PokemonController');
+const { json } = require('express');
 
 // recuperer la list 
 exports.listCarte = function (req, res) { 
     connection.query("SELECT idcarte, pokemon.nom as nompokemon, carte.nom as nomcarte, attaque, puissance, IsBrillant, IsRare, pokemon, proprietaire, idpokemon, type, element FROM pokemon.carte JOIN pokemon.pokemon on pokemon=idpokemon", function (error, resultSQL) {
         if (error)  {
             console.log(error)
-            res.status(400).send(error); //400=error       
+            res.status(400).json({"error":error}); //400=error       
         }
         else {
             res.status(200); //200: Ok pas d'erreur
@@ -15,7 +16,7 @@ exports.listCarte = function (req, res) {
             var pokemons;
             pokemonsCtrl.listPokemons(function(result){
                 pokemons=result
-                res.render('listCarte.ejs',{listCarte:listCarte,pokemons:pokemons}) //premier listCarte se trouve ds ejs
+            res.json({listCarte:listCarte,pokemons:pokemons}) //premier listCarte se trouve ds ejs
             });
             
         }
@@ -39,11 +40,11 @@ exports.manageCarte = function (req, res){
         console.log(carte)
         connection.query("UPDATE pokemon.carte SET ? WHERE idcarte=? " ,[carte,carteid],function(error,resultSQL){ 
             if (error){
-                res.status(400).send(error);
+                res.status(400).json({"error":error});
             
             }
             else {
-                res.status(201).redirect("/listCarte")
+                res.status(201).json({"message":"success"});
             }
         });
     
@@ -52,12 +53,12 @@ exports.manageCarte = function (req, res){
         connection.query("DELETE FROM pokemon.carte where idcarte=? ", idcarte, function (error,resultSQL){
             if (error)  {
                 console.log(error)
-                res.status(400).send(error); //400=error  
+                res.status(400).json({"error":error}); //400=error  
             }
             else {
                 res.status(200); //200: Ok pas d'erreur
                 console.log("delete");
-                res.redirect("/listCarte")
+                res.json({"message":"success"});
             }
 
         });
@@ -66,5 +67,8 @@ exports.manageCarte = function (req, res){
     //render appel la page 
 
 }
+
+
+
 
 
