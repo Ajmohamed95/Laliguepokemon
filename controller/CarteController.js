@@ -4,7 +4,10 @@ var pokemonsCtrl = require ('./PokemonController')
 
 // recuperer la list 
 exports.listCarte = function (req, res) { 
-    connection.query("SELECT idcarte, pokemon.nom as nompokemon, carte.nom as nomcarte, attaque, puissance, IsBrillant, IsRare, pokemon, proprietaire, idpokemon, type, element FROM pokemon.carte JOIN pokemon.pokemon on pokemon=idpokemon", function (error, resultSQL) {
+    connection.query("SELECT idcarte, pokemon.nom as nompokemon, carte.nom as nomcarte, attaque, puissance, IsBrillant, IsRare, \
+                            pokemon, proprietaire, idpokemon, type, element \
+                        FROM pokemon.carte JOIN pokemon.pokemon on pokemon=idpokemon \
+                        where proprietaire = ?", req.session.idutilisateur, function (error, resultSQL) {
         if (error)  {
             console.log(error)
             res.status(400).send(error); //400=error       
@@ -67,4 +70,31 @@ exports.manageCarte = function (req, res){
 
 }
 
+exports.carteNew =  function(req, res) {
+    console.log(req.body) //affiche console log dans le terminale
+    //let todoid = req.body.todoid;
+    let cartenom = req.body.cartes
+    let brillant1 = 0
+    if(req.body.brillant1) //si 
+        brillant1 = 1
+    let rare1 = 0
+    if(req.body.rare1)
+        rare1 = 1
+    let attaque = req.body.attaque
+    let puissance1 = req.body.puissance1
+    let proprio = req.session.idutilisateur
+    let pokemon = req.body.pokemon
+    let carte = new carteModel(cartenom, attaque, puissance1, brillant1, rare1, proprio, pokemon) 
+    connection.query("INSERT INTO pokemon.carte set ?",carte,function(error,resultSQL){ 
+        if (error){
+            res.status(400).send(error);
+        
+        }
+        else {
+            res.status(201).redirect("/listCarte")
+        }
+    });
+
+
+}
 

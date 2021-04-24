@@ -10,15 +10,15 @@
     -->
 <form action="/listCarte/new" method="POST">
     <label for="cartes">Cartes: </label> 
-    <input type="text" id="cartes" name="cartes" value=" "><br>
+    <input type="text" id="cartes" name="cartes" required><br>
     <input type="checkbox" id="brillant" name="brillant1" value="1">
-    <label for="brillant1"> Brillance </label><br>
+    <label for="brillant1" > Brillance </label><br>
     <input type="checkbox" id="rare" name="rare1" value="1">
     <label for="rare1"> Rareté </label><br>
     <label for="attaque">Attaque: </label> 
-    <input type="text" id="attaque" name="attaque" value=" "><br>
+    <input type="text" id="attaque" name="attaque" required><br>
     <label for="Puissance">Puissance (between 1 and 100):</label>
-    <input type="number" id="puissance" name="puissance1" min="1" max="100">
+    <input type="number" id="puissance" name="puissance1" min="1" max="100" required>
     <br>
     <label for="proprio">nom de propriétaire: </label>
     <select name="proprio" id="proprio">
@@ -36,6 +36,7 @@
     </select>
     <br><br>
 <button>Ajouter</button>
+
 </form>
 </p>
 

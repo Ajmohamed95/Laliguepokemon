@@ -2,6 +2,7 @@ const proprioModel = require('../models/utilisateurModel');
 const connection = require('../dbManager');
 const carteModel = require('../models/carteModel');
 const utilisateurModel = require('../models/utilisateurModel');
+const session = require('express-session');
 
 
 // recuperer la list 
@@ -36,6 +37,10 @@ exports.login = function (req, res) {
 
 }
 exports.logon = function (req, res){
+    if(req.session.idutilisateur){
+        res.redirect("/listCarte")
+        
+    }
     console.log (req.body);
     var login = req.body.uname;
     var email = req.body.email;
@@ -49,7 +54,7 @@ exports.logon = function (req, res){
             req.session.idutilisateur = resultSQL[0].idutilisateur;
             req.session.login = login;
             req.session.email = email;
-            res.redirect("/collectionCarte")
+            res.redirect("/listCarte")
         }
         else {
             error = "information incorrecte, "
@@ -84,29 +89,9 @@ exports.inscrit = function (req, res) {
         
 
 }
-
-exports.carteNew =  function(req, res) {
-    console.log(req.body) //affiche console log dans le terminale
-    //let todoid = req.body.todoid;
-    let cartenom = req.body.cartes
-    let brillant1 = req.body.brillant1
-    let rare1 = req.body.rare1
-    let attaque = req.body.attaque
-    let puissance1 = req.body.puissance1
-    let proprio = req.body.proprio
-    let pokemon = req.body.pokemon
-    let carte = new carteModel(cartenom, attaque, puissance1, brillant1, rare1, proprio, pokemon) 
-    connection.query("INSERT INTO pokemon.carte set ?",carte,function(error,resultSQL){ 
-        if (error){
-            res.status(400).send(error);
-        
-        }
-        else {
-            res.status(201).redirect("/listCarte")
-        }
-    });
-
-
+exports.logout = function (req, res){
+    req.session.destroy();
+    res.redirect("/login")
 }
 
 
