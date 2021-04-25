@@ -1,14 +1,7 @@
 <h1>création de cartes</h1>
 <a href="/listCarte">voir les cartes</a>
 <p> 
-<!-- <% for( let i = 0; i <listProprio.length; i++ ) { %> 
-        <%= listProprio[i].login %> 
-        <Form action="/remove/<%= i %>">
-            <button>delete</button>
-        </Form><br>
-<%  } %>
-    -->
-<form action="/listCarte/new" method="POST">
+<form action="/newCarte" method="POST">
     <label for="cartes">Cartes: </label> 
     <input type="text" id="cartes" name="cartes" required><br>
     <input type="checkbox" id="brillant" name="brillant1" value="1">
@@ -19,14 +12,6 @@
     <input type="text" id="attaque" name="attaque" required><br>
     <label for="Puissance">Puissance (between 1 and 100):</label>
     <input type="number" id="puissance" name="puissance1" min="1" max="100" required>
-    <br>
-    <label for="proprio">nom de propriétaire: </label>
-    <select name="proprio" id="proprio">
-        <% for( let i = 0; i <listProprio.length; i++ ) { %> 
-            <option value="<%= listProprio[i].idutilisateur %> "> <%= listProprio[i].login %> </option>
-    <%  } %>
-    </select>
-    <br><br>
     <br>
     <label for="pokemon">pokemon attaché: </label>
     <select name="pokemon" id="pokemon">
