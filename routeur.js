@@ -41,8 +41,10 @@ router.get('/API/inscription',proprietaireAPIController.inscription)
 router.post('/API/inscrit',proprietaireAPIController.inscrit)
 router.post('/API/newCarte', carteAPIController.carteNew);
 router.get('/API/listCarte',carteAPIController.listCarte);
-router.get('/API/listCarte/:idcarte',carteAPIController.manageCarte)
+router.put('/API/listCarte/:idcarte',carteAPIController.manageCarte)
+router.delete('/API/listCarte/:idcarte',carteAPIController.manageCarte)
 router.get('/API/pokemon',pokemonAPIController.listPokemons)
+
 
 
 // router.get('/Api/Lu', readingApiController.Lu);

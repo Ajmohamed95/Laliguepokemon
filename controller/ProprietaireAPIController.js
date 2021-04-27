@@ -47,6 +47,7 @@ exports.logon = function (req, res){
             console.log("test");
             console.log(resultSQL[0].idutilisateur);
             req.session.idutilisateur = resultSQL[0].idutilisateur;
+            console.log(req.session.idutilisateur)
             req.session.login = login;
             req.session.email = email;
             res.json({"message":"succes"});

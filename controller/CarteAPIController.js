@@ -23,7 +23,7 @@ exports.listCarte = function (req, res) {
     });
 }
 exports.manageCarte = function (req, res){
-    //connection.query("UPDATE ")
+    console.log(req.body)
     let idcarte = req.params.idcarte
     let update = req.query.update
     if (update) {
@@ -50,6 +50,7 @@ exports.manageCarte = function (req, res){
     
     }
     else{
+        console.log(idcarte)
         connection.query("DELETE FROM pokemon.carte where idcarte=? ", idcarte, function (error,resultSQL){
             if (error)  {
                 console.log(error)
@@ -70,16 +71,17 @@ exports.manageCarte = function (req, res){
 exports.carteNew =  function(req, res) {
     console.log(req.body) //affiche console log dans le terminale
     //let todoid = req.body.todoid;
-    let cartenom = req.body.cartes
-    let brillant1 = req.body.brillant1
-    let rare1 = req.body.rare1
+    let cartenom = req.body.nom
+    let brillant1 = req.body.isBrillant
+    let rare1 = req.body.isRare
     let attaque = req.body.attaque
-    let puissance1 = req.body.puissance1
-    let proprio = req.body.proprio
+    let puissance1 = req.body.puissance
+    let proprio = req.body.proprietaire
     let pokemon = req.body.pokemon
     let carte = new carteModel(cartenom, attaque, puissance1, brillant1, rare1, proprio, pokemon) 
     connection.query("INSERT INTO pokemon.carte set ?",carte,function(error,resultSQL){ 
         if (error){
+            console.log(resultSQL)
             res.status(400).json({"error":error});
         
         }
