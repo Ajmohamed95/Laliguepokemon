@@ -37,8 +37,7 @@ router.get('/logout',proprietaireController.logout)
 router.get('/API/login',proprietaireAPIController.login);
 router.post('/API/logon',proprietaireAPIController.logon)
 router.get('/API/collectionCarte',proprietaireAPIController.listProprio);
-router.get('/API/inscription',proprietaireAPIController.inscription)
-router.post('/API/inscrit',proprietaireAPIController.inscrit)
+router.post('/API/inscription',proprietaireAPIController.inscription)
 router.post('/API/newCarte', carteAPIController.carteNew);
 router.get('/API/listCarte',carteAPIController.listCarte);
 router.put('/API/listCarte/:idcarte',carteAPIController.manageCarte)

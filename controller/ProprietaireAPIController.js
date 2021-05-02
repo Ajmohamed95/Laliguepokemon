@@ -50,7 +50,7 @@ exports.logon = function (req, res){
             console.log(req.session.idutilisateur)
             req.session.login = login;
             req.session.email = email;
-            res.json({"message":"succes"});
+            res.json({"message":"succes","idutilisateur":req.session.idutilisateur});
         }
         else {
             error = "information incorrecte, "
@@ -61,10 +61,6 @@ exports.logon = function (req, res){
 
 }
 exports.inscription = function (req, res) {
-    error = ""
-    res.json({error:error})
-}
-exports.inscrit = function (req, res) {
     console.log (req.body);
     var login = req.body.uname;
     var email = req.body.email;
@@ -73,9 +69,10 @@ exports.inscrit = function (req, res) {
     connection.query(" INSERT INTO pokemon.utilisateur set ?",utilisateur,
         function(error,resultSQL) {
         console.log(resultSQL)
+        console.log(error)
         if (error){
             error = "utilisateur existant"
-            res.status(400).json({"error":error});
+            res.json({"error":error});
         
         }
         else {
