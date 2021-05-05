@@ -5,7 +5,11 @@ const { json } = require('express');
 
 // recuperer la list 
 exports.listCarte = function (req, res) { 
-    connection.query("SELECT idcarte, pokemon.nom as nompokemon, carte.nom as nomcarte, attaque, puissance, IsBrillant, IsRare, pokemon, proprietaire, idpokemon, type, element FROM pokemon.carte JOIN pokemon.pokemon on pokemon=idpokemon", function (error, resultSQL) {
+    let idutilisateur = req.params.idutilisateur;
+    connection.query("SELECT idcarte, pokemon.nom as nompokemon, carte.nom as nomcarte, attaque, puissance,\
+                             IsBrillant, IsRare, pokemon, proprietaire, idpokemon, type, element \
+                             FROM pokemon.carte JOIN pokemon.pokemon on pokemon=idpokemon\
+                             where proprietaire = ?", idutilisateur, function (error, resultSQL) {
         if (error)  {
             console.log(error)
             res.status(400).json({"error":error}); //400=error       
@@ -25,17 +29,16 @@ exports.listCarte = function (req, res) {
 exports.manageCarte = function (req, res){
     console.log(req.body)
     let idcarte = req.params.idcarte
-    let update = req.query.update
+    let update = req.body.update
     if (update) {
-        console.log(req.query)
         let carteid = req.params.idcarte
-        let cartenom = req.query.cartenom
-        let brillant1 = req.query.isBrillant
-        let rare1 = req.query.isRare
-        let attaque = req.query.attaque
-        let puissance1 = req.query.puissance
-        let proprio = req.session.idutilisateur
-        let idpokemon = req.query.pokemonattache
+        let cartenom = req.body.nomcarte
+        let brillant1 = req.body.IsBrillant
+        let rare1 = req.body.IsRare
+        let attaque = req.body.attaque
+        let puissance1 = req.body.puissance
+        let proprio = req.body.proprietaire
+        let idpokemon = req.body.pokemon
         let carte = new carteModel(cartenom, attaque, puissance1, brillant1, rare1, proprio, idpokemon) 
         console.log(carte)
         connection.query("UPDATE pokemon.carte SET ? WHERE idcarte=? " ,[carte,carteid],function(error,resultSQL){ 
@@ -82,7 +85,7 @@ exports.carteNew =  function(req, res) {
     connection.query("INSERT INTO pokemon.carte set ?",carte,function(error,resultSQL){ 
         if (error){
             console.log(resultSQL)
-            res.status(400).json({"error":error});
+            res.json({"error":error});
         
         }
         else {

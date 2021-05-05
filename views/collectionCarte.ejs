@@ -1,28 +1,117 @@
-<h1>création de cartes</h1>
-<a href="/listCarte">voir les cartes</a>
-<p> 
-<form action="/newCarte" method="POST">
-    <label for="cartes">Cartes: </label> 
-    <input type="text" id="cartes" name="cartes" required><br>
-    <input type="checkbox" id="brillant" name="brillant1" value="1">
-    <label for="brillant1" > Brillance </label><br>
-    <input type="checkbox" id="rare" name="rare1" value="1">
-    <label for="rare1"> Rareté </label><br>
-    <label for="attaque">Attaque: </label> 
-    <input type="text" id="attaque" name="attaque" required><br>
-    <label for="Puissance">Puissance (between 1 and 100):</label>
-    <input type="number" id="puissance" name="puissance1" min="1" max="100" required>
-    <br>
-    <label for="pokemon">pokemon attaché: </label>
-    <select name="pokemon" id="pokemon">
-        <% for( let i = 0; i <listPokemon.length; i++ ) { %> 
-            <option value="<%= listPokemon[i].idpokemon %> "> <%= listPokemon[i].nom %> </option>
-    <%  } %>
-    </select>
-    <br><br>
-<button>Ajouter</button>
+<!DOCTYPE html>
+<html lang="fr">
 
-</form>
-</p>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
+
+    <!-- JS Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <title>Création de cartes</title> 
+  </head> 
+  <body>
+
+
+ <nav class="navbar fixed-top navbar-expand-md navbar-dark scrolling-navbar" id="navnav">
+ 
+    <a class="navbar-brand" href="#"> <img src="images/logo.png" width="40%" alt="logo pokemon" style="margin-left: 5px;"> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sticky-nav">
+      <span class="navbar-toggler-icon"></span> 
+    </button>
+
+    <div class="collapse navbar-collapse" id="sticky-nav">
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item">
+          <a href="/index" class="nav-link"> Accueil</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/index#ligue" class="nav-link"> Ligue</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a href="/index#contact" class="nav-link"> Contact </a>
+        </li>
+
+
+      </ul>
+      
+    </div>
+    
+  </nav>
+
+<section class="cart">
+  <div class="wrapper2 fadeInDown">
+    <div id="formContent2">
+
+        <div class="fadeIn first" style="padding-bottom: 20px;">
+            <h2 class="title">Création de cartes</h2>
+        </div>
+
+        <!-- <% for( let i = 0; i <listProprio.length; i++ ) { %> 
+                <%= listProprio[i].login %> 
+                <Form action="/remove/<%= i %>">
+                    <button>delete</button>
+                </Form><br>
+        <%  } %>
+            -->
+        <form action="/listCarte/new" method="POST">
+            <!-- <label for="cartes">Cartes: </label>  -->
+            <input type="text" id="cartes" name="cartes" placeholder="Nom de la carte" required><br>
+            
+                    <div class="form-check-inline">
+                    <input type="checkbox" id="brillant" name="brillant1" value="1">
+                    <label class="labelcarte" for="brillant1"> Brillance </label><br>
+                    <input type="checkbox" id="rare" name="rare1" value="1">
+                    <label class="labelcarte" for="rare1"> Rareté </label><br>
+                    </div>
+
+            <!-- <label for="attaque">Attaque: </label>  -->
+            <input type="text" id="attaque" name="attaque" placeholder="Nom de l'attaque" required>
+            <br>
+            <label for="Puissance">Puissance (entre 1 et 100) </label>
+            <input type="number" id="puissance" name="puissance1" min="1" max="100" required>
+            <br><br>
+            <label for="pokemon">pokemon attaché </label>
+            <select name="pokemon" id="pokemon">
+                <% for( let i = 0; i <listPokemon.length; i++ ) { %> 
+                    <option value="<%= listPokemon[i].idpokemon %> "> <%= listPokemon[i].nom %> </option>
+            <%  } %>
+            </select>
+            <br><br>
+        <!-- <button>Ajouter</button> -->
+        <input type="submit" class="fadeIn fourth" value="Ajouter">
+        <div id="formFooter" style="padding: 15px;">
+        <a class="underlineHover" href="/listCarte">Voir mes cartes</a>
+        </div>
+
+        </form>
+
+    </div>
+  </div>
+</section>
+    
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+  
+
+</script>
+
+  </body>
+</html>
 
 

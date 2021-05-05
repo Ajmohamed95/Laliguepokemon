@@ -21,16 +21,22 @@ const check = (req, res, next) => { // req et res correspondent aux paramètres 
 
 
 //routeur
-router.get('/',(req,res)=> res.redirect('/login'))
+router.get('/',(req,res)=> res.render('index.ejs'))
+router.get('/index',(req,res)=> res.render('index.ejs'))
 router.get('/login',proprietaireController.login);
 router.post('/logon',proprietaireController.logon)
 router.get('/collectionCarte',check,proprietaireController.listProprio);
 router.get('/inscription',proprietaireController.inscription)
 router.post('/inscrit',proprietaireController.inscrit)
-router.post('/newCarte',check,carteController.carteNew);
+router.post('/listCarte/new',check,carteController.carteNew);
 router.get('/listCarte',check,carteController.listCarte);
 router.get('/listCarte/:idcarte',carteController.manageCarte)
 router.get('/logout',proprietaireController.logout)
+router.get('/getpokemon',pokemonController.getPokemons)
+router.post('/newpokemon',pokemonController.newpokemon)
+router.get('/createpokemon',pokemonController.createpokemon)
+router.get('/listpokemon/:idpokemon',pokemonController.managepokemon)
+
 
 //routeurAPI
 //router.get('/',(req,res)=> res.redirect('/login'))
@@ -39,7 +45,7 @@ router.post('/API/logon',proprietaireAPIController.logon)
 router.get('/API/collectionCarte',proprietaireAPIController.listProprio);
 router.post('/API/inscription',proprietaireAPIController.inscription)
 router.post('/API/newCarte', carteAPIController.carteNew);
-router.get('/API/listCarte',carteAPIController.listCarte);
+router.get('/API/listCarte/:idutilisateur',carteAPIController.listCarte);
 router.put('/API/listCarte/:idcarte',carteAPIController.manageCarte)
 router.delete('/API/listCarte/:idcarte',carteAPIController.manageCarte)
 router.get('/API/pokemon',pokemonAPIController.listPokemons)

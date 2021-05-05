@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
+
+    <!-- JS Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <title>Ligue Pokémon</title> 
+  </head>
+  <body>
+
+
+ <nav class="navbar fixed-top navbar-expand-md navbar-dark scrolling-navbar" id="navnav">
+ 
+    <a class="navbar-brand" href="index.html"> <img src="images/logo.png" width="40%" alt="logo pokemon" style="margin-left: 5px;"> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sticky-nav">
+      <span class="navbar-toggler-icon"></span> 
+    </button>
+
+    <div class="collapse navbar-collapse" id="sticky-nav">
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item">
+          <a href="#accueil" class="nav-link"> Accueil</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#ligue" class="nav-link"> Ligue</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a href="#contact" class="nav-link"> Contact </a>
+        </li>
+
+
+      </ul>
+      
+    </div>
+    
+  </nav>
+
+  <section class="accueil" id="accueil">
+
+    <div class="container acc1">
+      <center><img id="navlogo" src="images/logo2.png" width="25%" alt="logo engie"></center>
+        <div class="row">
+          <div class="col-xl-12">
+            
+            <h1 class="titlefirst"> Lancez-vous dans la Ligue Combat de Pokémon!</h1>
+
+            <h1 class="titlefirst">Triomphe d'autres Dresseurs pour améliorer ton rang et recevoir de meilleures récompenses!</h1>
+        </div>
+      </div>
+    </div>
+
+    <center><a type="button" class="btn btn-primary" id="btn-principal" href="#ligue">Ligue Pokémon</a></center>
+
+  </section>
+
+
+
+  <section class="ligue" id="ligue">
+  <div class="container">
+  <div class="row">
+    
+       <div class="col-lg-5">
+        <img src="images/pokemon1.jpg" width="90%" alt="se connecter pour la ligue pokemon">
+      </div>
+
+    <div class="col-lg-7">
+      <h2 class="title">Ligue Pokémon</h2>
+        <br>
+        <p id="paragraphetxt"> La Ligue Pokémon rassemble les fans de Pokémon qui souhaitent s'amuser dans une atmosphère relaxante.</p> 
+
+        <p id="paragraphetxt">Les événements de Ligue Pokémon sont une excellente façon d'assimiler les bases du jeu et de s'habituer au jeu compétitif avant de se lancer dans les tournois Pokémon.
+        </p>
+
+
+        <p id="paragraphetxt">Si vous voulez participer à la prochaine édition de la Ligue Pokémon, n'hésite pas à te connecter ou t'inscrire si ce n'est pas encore fait pour montrer au monde entier la puissance de ta meilleure carte !</p>
+
+        <br>
+
+         <div class="doublebtn">
+          <ul >
+            <li><a type="button" class="btn btn-primary" id="btn-secondary" href="/login">Se connecter</a></li>
+            <li><a type="button" class="btn btn-primary" id="btn-third" href="/inscription">S'inscrire</a></a></li>
+          </ul>
+          </div>
+    </div>
+
+  </div>
+  </div>
+  </section>
+
+
+  <section class="promo" id="promo">
+  <div class="container">
+  <div class="row">
+                    
+    <div class="col-lg-8" style="margin-top: 50px; margin-bottom: 50px;">
+      <h2 class="title2">Pour ne manquer aucune information concernant tous les pokémons du monde et pour vous-mêmes devenir le meilleur dresseur n'oublier pas de visiter le site officiel !</h2> 
+
+      <h2 class="title" style="color: white">Attrapez-les tous!</h2>
+
+    </div>
+
+    <div class="col-lg-4" style="margin-top: 200px;">
+      <a type="button" class="btn btn-primary" id="btn-secondary2" href="https://www.pokemon.com/fr/" target="_blank">C'est parti</a></li>
+    </div>
+  </div>
+  </div>
+  </section>
+
+
+          <section id="contact">
+              <div class="container">
+                <h2 class="title">Contactez-nous</h2>
+                <div class="row">
+
+                <div class="left ez-animate col-12 col-md-6" data-animation="fadeInLeft">
+                  <form action="#">
+                  <div class="row">
+                    <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                      <input type="text" class="form-control" name="name" placeholder="Nom" required="">
+                    </div>
+                    <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                      <input type="email" class="form-control" name="email" placeholder="Email" required="">
+                    </div>
+                    <div class="form-group col-12">
+                      <textarea class="form-control" name="message" placeholder="Message" required=""></textarea>
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-12">
+                      <button type="submit" class="shadow1 style3 bgscheme">Envoyer</button>
+                      </div>
+                    </div>
+                  </form>
+                  </div>
+                  <div class="right ez-animate col-12 col-md-6" data-animation="fadeInRight">
+                    <h2 class="subtitle">Une question ?</h2>
+                    <p> Entrez en contact avec nous directement via ce formulaire pour toutes questions concernant la Ligue Pokémon.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+   <footer>
+    <p style="text-align: center">© Copyright Mohamed Ajbailou - Ligue Pokémon</p>
+  </footer>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+  
+
+</script>
+
+  </body>
+</html>

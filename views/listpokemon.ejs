@@ -16,14 +16,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-    <title>Inscription</title> 
+    <title>Liste des Pokémons</title> 
   </head>
   <body>
 
 
-  <nav class="navbar fixed-top navbar-expand-md navbar-dark scrolling-navbar" id="navnav">
+ <nav class="navbar fixed-top navbar-expand-md navbar-dark scrolling-navbar" id="navnav">
  
-    <a class="navbar-brand" href="index.html"> <img src="images/logo.png" width="40%" alt="logo pokemon" style="margin-left: 5px;"> </a>
+    <a class="navbar-brand" href="#"> <img src="images/logo.png" width="40%" alt="logo pokemon" style="margin-left: 35px;"> </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sticky-nav">
       <span class="navbar-toggler-icon"></span> 
     </button>
@@ -31,7 +31,7 @@
     <div class="collapse navbar-collapse" id="sticky-nav">
       <ul class="navbar-nav ml-auto ">
         <li class="nav-item">
-          <a href="/index#accueil" class="nav-link"> Accueil</a>
+          <a href="/index" class="nav-link"> Accueil</a>
         </li>
 
         <li class="nav-item">
@@ -50,32 +50,53 @@
     
   </nav>
 
-<section class="align">
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
+  <section class="listecarte">
+    <div class="wrapper3 fadeInDown">
 
-    <!-- Icon -->
-    <div class="fadeIn first" style="padding-bottom: 25px;">
-      <h2 class="title">Inscription</h2>
+      <div id="formContent3">
+
+        <div class="fadeIn first" style="padding-bottom: 20px;">
+            <h2 class="title">Liste des  Pokémons</h2>
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+                <th>Nom</th>
+                <th>type</th>
+                <th>element</th>
+            </tr>
+          </thead>
+
+            <tbody>
+            <% for( let i = 0; i <listpokemon.length; i++ ) {
+                %>
+            <Form action="/listpokemon/<%= listpokemon[i].idpokemon  %>" method="GET">
+            <tr>
+              <th><input type="text" name="nom" value="<%= listpokemon[i].nom %>"></th>
+              <th><input type="text" name="type" value="<%= listpokemon[i].type %>"></th>
+              <th><input type="text" name="element" value="<%= listpokemon[i].element %>"></th>
+              <th><button class="btn btn-primary" id="btn-update" name="update" value="update">update</button></th>
+              <th><button class="btn btn-primary" id="btn-delete" name="delete" value="delete">delete</button></th>
+              <th><input type="hidden" name="idpokemon" value="<%= listpokemon[i].idpokemon %>"></th>
+            </tr>
+            </Form>
+              <%  } %>
+            </tbody>
+          </table>
+
+          <div id="formFooter" style="padding: 15px;">
+            <a href="/collectionCarte">Créer une carte</a>
+            <a href="/createpokemon">Créer un pokémon</a>
+            <a href="/listCarte"> liste des cartes </a>
+            <a href="/logout" style="float: right; color: #e63946; font-weight: bold;">Déconnexion</a>
+          </div>
+
+      </div>
+
     </div>
-
-    <!-- Login Form -->
-    <form action="/inscrit" method="POST">
-      <input type="text" id="login" class="fadeIn second" placeholder="Pseudo" name="uname" required>
-      <input type="email" id="login" class="fadeIn third" placeholder="Email" id="email" name="email" required>
-      <input type="password" id="password" class="fadeIn fourth" placeholder="Mot de passe" name="psw" required>
-      <input type="submit" class="fadeIn fourth" value="S'inscrire">
-    </form>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      Déjà inscrit ? <a class="underlineHover" href="/login">Se connecter.</a>
-    </div>
-
-  </div>
-</div>
-</section>
+  </section> 
+    
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

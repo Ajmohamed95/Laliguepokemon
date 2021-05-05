@@ -44,3 +44,8 @@ let port = process.env.PORT || 8000;
 app.listen(port, function () {
     console.log(" Server running on port " + port);
 });
+
+//TEST
+app.use(express.static('public'))
+app.use('/css', express.static(__dirname + 'public/css'))
+app.use('/images', express.static(__dirname + 'public/images'))
