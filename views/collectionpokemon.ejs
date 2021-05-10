@@ -55,23 +55,24 @@
     <div id="formContent2">
 
         <div class="fadeIn first" style="padding-bottom: 20px;">
-            <h2 class="title">Ajouter un pokemon</h2>
+            <h2 class="title">Ajouter un pokémon</h2>
         </div>
         <form action="/newpokemon" method="POST">
-            <!-- <label for="cartes">Cartes: </label>  -->
-            <input type="text" id="pks" name="nom" placeholder="Nom du pokemon" required><br>
+            <!-- <label for="cartes">Cartes: </label>  --> 
+            <input class="fadeIn second" type="text" id="pks" name="nom" placeholder="Nom du pokémon" required><br>
             
-                    <div class="form-check-inline">
-                    </div>
+                  <!-- CHECK ICI SI TU AS BESOIN DE CE BOUT DE CODE SINON RETIRE LE > Il Fait tilter l'allignement. -->
+                    <!-- <div class="form-check-inline">
+                    </div> -->
 
             <!-- <label for="attaque">Attaque: </label>  -->
-            <input type="text" id="type" name="type" placeholder="type du pokemon" required>
+            <input class="fadeIn third" type="text" id="type" name="type" placeholder="Type du pokémon" required>
             <br>
-            <input type="text" id="element" name="element" placeholder="element du pokemon" required>
+            <input class="fadeIn fourth" type="text" id="element" name="element" placeholder="Elément du pokémon" required>
           
         <!-- <button>Ajouter</button> -->
         <input type="submit" class="fadeIn fourth" value="Ajouter">
-        <div id="formFooter" style="padding: 15px;">
+        <div id="formFooter">
         <a class="underlineHover" href="/listCarte">Voir mes cartes</a>
         </div>
 

@@ -24,7 +24,7 @@ exports.listProprio = function (req, res) {
                     listPokemon =  resultSQL;
                     console.log(listPokemon);
                 }
-                res.json({listProprio:listProprio, listPokemon:listPokemon})
+                res.json({listProprio:listProprio, listPokemon:listPokemon, message:"success"})
             });
 
         }
